@@ -4,6 +4,7 @@ var wizardsNames = ['Иван', 'Хуан', 'Себастьян', 'Мария', 
 var wizardsLastNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var wizardsCoatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var wizardsEyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_COUNT = 4;
 
 var makeBlockVisible = function (blockSelector) {
   var setupBlock = document.querySelector(blockSelector);
@@ -29,7 +30,11 @@ var generateWizard = function () {
 
 makeBlockVisible('.setup');
 
-var wizardsList = [generateWizard(), generateWizard(), generateWizard(), generateWizard()];
+var wizardsList = [];
+
+for (var i = 0; i < WIZARD_COUNT; i++) {
+  wizardsList[i] = generateWizard();
+}
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 var setupSimilarList = document.querySelector('.setup-similar-list');
@@ -43,8 +48,8 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizardsList.length; i++) {
-  fragment.appendChild(renderWizard(wizardsList[i]));
+for (var j = 0; j < wizardsList.length; j++) {
+  fragment.appendChild(renderWizard(wizardsList[j]));
 }
 setupSimilarList.appendChild(fragment);
 
